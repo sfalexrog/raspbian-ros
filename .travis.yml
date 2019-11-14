@@ -4,18 +4,22 @@ language: generic
 services:
   - docker
 
+env:
+  - ROS_DISTRO=kinetic
+  - ROS_DISTRO=melodic
+
 before_script:
   - docker pull sfalexrog/qemu-register:v4.1.0
   - docker run --rm --privileged sfalexrog/qemu-register:v4.1.0
 
 script:
-  - pushd melodic
-  - docker build --rm --tag=sfalexrog/rpi-ros:melodic-core .
+  - pushd ${ROS_DISTRO}
+  - docker build --rm --tag=sfalexrog/rpi-ros:${ROS_DISTRO}-core .
   - popd
 
 after_script:
   - >
     if [ "${TRAVIS_BRANCH}" == "master" ]; then
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      docker push "sfalexrog/rpi-ros:melodic-core"
+      docker push "sfalexrog/rpi-ros:${ROS_DISTRO}-core"
     fi
