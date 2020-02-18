@@ -31,7 +31,7 @@ ENV LC_ALL C.UTF-8
 # setup rosdep
 RUN rosdep init \
     && echo "yaml file:///etc/ros/rosdep/melodic-rosdep-clever.yaml" > /etc/ros/rosdep/sources.list.d/90-coex.list \
-    && echo "yaml file:///etc/ros/rosdep/python3.yaml" > /etc/ros/rosdep/sources.list.d/91-python3.yaml \
+    && echo "yaml file:///etc/ros/rosdep/python3.yaml" > /etc/ros/rosdep/sources.list.d/91-python3.list \
     && rosdep update
 
 # install base ROS system
