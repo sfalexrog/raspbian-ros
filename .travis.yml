@@ -7,6 +7,7 @@ services:
 env:
   - ROS_DISTRO=kinetic
   - ROS_DISTRO=melodic
+  - ROS_DISTRO=melodic-py3
 
 before_script:
   - docker pull sfalexrog/qemu-register:v4.1.0
