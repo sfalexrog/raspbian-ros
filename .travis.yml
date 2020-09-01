@@ -3,16 +3,15 @@ dist: bionic
 language: generic
 services:
   - docker
+arch:
+  - arm64
+os: linux
 
 env:
   - ROS_DISTRO=kinetic
   - ROS_DISTRO=melodic
   - ROS_DISTRO=melodic-py3
   - ROS_DISTRO=noetic
-
-before_script:
-  - docker pull sfalexrog/qemu-register:v4.1.0
-  - docker run --rm --privileged sfalexrog/qemu-register:v4.1.0
 
 script:
   - pushd ${ROS_DISTRO}
