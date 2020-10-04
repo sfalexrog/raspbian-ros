@@ -11,10 +11,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
     && curl http://deb.coex.tech/aptly_repo_signing.key 2> /dev/null | apt-key add -
 
 # setup sources.list
-RUN echo "deb http://packages.ros.org/ros/ubuntu buster main" > /etc/apt/sources.list.d/ros1-latest.list
-# FIXME: Re-enable COEX packages after they are built
-#    && echo "deb http://deb.coex.tech/noetic buster main" > /etc/apt/sources.list.d/rpi-ros-kinetic.list \
-#    && echo "deb http://deb.coex.tech/opencv3 buster main" > /etc/apt/sources.list.d/opencv3.list
+RUN echo "deb http://packages.ros.org/ros/ubuntu buster main" > /etc/apt/sources.list.d/ros1-latest.list \
+    && echo "deb http://deb.coex.tech/opencv4 buster main" > /etc/apt/sources.list.d/opencv4.list \
+    && echo "deb http://deb.coex.tech/ros buster main" > /etc/apt/sources.list.d/coex-ros.list
 
 # FIXME: Add COEX rosdep definitions
 #COPY ./assets/melodic-rosdep-clever.yaml /etc/ros/rosdep/
